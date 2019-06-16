@@ -24,12 +24,13 @@ namespace GRpc.Messages {
     static ServiceReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg1zZXJ2aWNlLnByb3RvEgdNZXNzYWdlGg1tZXNzYWdlLnByb3RvMsgBChBD",
+            "Cg1zZXJ2aWNlLnByb3RvEgdNZXNzYWdlGg1tZXNzYWdlLnByb3RvMs0BChBD",
             "YW5kaWRhdGVTZXJ2aWNlEjsKCENyZWF0ZUN2EhIuTWVzc2FnZS5DYW5kaWRh",
             "dGUaGS5NZXNzYWdlLkNyZWF0ZUN2UmVzcG9uc2UoARI7CgpEb3dubG9hZEN2",
             "EhcuTWVzc2FnZS5Eb3dubG9hZEJ5TmFtZRoSLk1lc3NhZ2UuQ2FuZGlkYXRl",
-            "MAESOgoQQ3JlYXRlRG93bmxvYWRDdhISLk1lc3NhZ2UuQ2FuZGlkYXRlGhIu",
-            "TWVzc2FnZS5DYW5kaWRhdGVCEKoCDUdScGMuTWVzc2FnZXNiBnByb3RvMw=="));
+            "MAESPwoQQ3JlYXRlRG93bmxvYWRDdhISLk1lc3NhZ2UuQ2FuZGlkYXRlGhMu",
+            "TWVzc2FnZS5DYW5kaWRhdGVzKAEwAUIQqgINR1JwYy5NZXNzYWdlc2IGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::GRpc.Messages.MessageReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null));

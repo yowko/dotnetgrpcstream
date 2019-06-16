@@ -3,6 +3,10 @@ syntax = "proto3";
 package Message; //will be placed in a namespace matching the package name if csharp_namespace is not specified
 option csharp_namespace = "GRpc.Messages";
 
+message Candidates {
+    repeated Candidate Candidates = 2;
+}
+
 message Candidate {
     string Name = 1;
     repeated Job Jobs = 2;

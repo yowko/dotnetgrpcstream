@@ -47,8 +47,19 @@ namespace GRpc.Server
                     return u.Jobs;
                 }).Generate();
 
-           await  responseStream.WriteAsync(createRequests);
-            
+            await responseStream.WriteAsync(createRequests);
+        }
+
+        public override async Task CreateDownloadCv(IAsyncStreamReader<Candidate> requestStream,
+            IServerStreamWriter<Candidates> responseStream, ServerCallContext context)
+        {
+            var candidates = new Candidates();
+            while (await requestStream.MoveNext())
+            {
+                var candidate = requestStream.Current;
+                candidates.Candidates_.Add(candidate);
+                await responseStream.WriteAsync(candidates);
+            }
         }
     }
 }

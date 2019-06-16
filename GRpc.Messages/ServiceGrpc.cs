@@ -15,6 +15,7 @@ namespace GRpc.Messages {
     static readonly grpc::Marshaller<global::GRpc.Messages.Candidate> __Marshaller_Message_Candidate = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRpc.Messages.Candidate.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GRpc.Messages.CreateCvResponse> __Marshaller_Message_CreateCvResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRpc.Messages.CreateCvResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GRpc.Messages.DownloadByName> __Marshaller_Message_DownloadByName = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRpc.Messages.DownloadByName.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GRpc.Messages.Candidates> __Marshaller_Message_Candidates = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRpc.Messages.Candidates.Parser.ParseFrom);
 
     static readonly grpc::Method<global::GRpc.Messages.Candidate, global::GRpc.Messages.CreateCvResponse> __Method_CreateCv = new grpc::Method<global::GRpc.Messages.Candidate, global::GRpc.Messages.CreateCvResponse>(
         grpc::MethodType.ClientStreaming,
@@ -30,12 +31,12 @@ namespace GRpc.Messages {
         __Marshaller_Message_DownloadByName,
         __Marshaller_Message_Candidate);
 
-    static readonly grpc::Method<global::GRpc.Messages.Candidate, global::GRpc.Messages.Candidate> __Method_CreateDownloadCv = new grpc::Method<global::GRpc.Messages.Candidate, global::GRpc.Messages.Candidate>(
-        grpc::MethodType.Unary,
+    static readonly grpc::Method<global::GRpc.Messages.Candidate, global::GRpc.Messages.Candidates> __Method_CreateDownloadCv = new grpc::Method<global::GRpc.Messages.Candidate, global::GRpc.Messages.Candidates>(
+        grpc::MethodType.DuplexStreaming,
         __ServiceName,
         "CreateDownloadCv",
         __Marshaller_Message_Candidate,
-        __Marshaller_Message_Candidate);
+        __Marshaller_Message_Candidates);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -57,7 +58,7 @@ namespace GRpc.Messages {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
-      public virtual global::System.Threading.Tasks.Task<global::GRpc.Messages.Candidate> CreateDownloadCv(global::GRpc.Messages.Candidate request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task CreateDownloadCv(grpc::IAsyncStreamReader<global::GRpc.Messages.Candidate> requestStream, grpc::IServerStreamWriter<global::GRpc.Messages.Candidates> responseStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -103,21 +104,13 @@ namespace GRpc.Messages {
       {
         return CallInvoker.AsyncServerStreamingCall(__Method_DownloadCv, null, options, request);
       }
-      public virtual global::GRpc.Messages.Candidate CreateDownloadCv(global::GRpc.Messages.Candidate request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncDuplexStreamingCall<global::GRpc.Messages.Candidate, global::GRpc.Messages.Candidates> CreateDownloadCv(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return CreateDownloadCv(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return CreateDownloadCv(new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::GRpc.Messages.Candidate CreateDownloadCv(global::GRpc.Messages.Candidate request, grpc::CallOptions options)
+      public virtual grpc::AsyncDuplexStreamingCall<global::GRpc.Messages.Candidate, global::GRpc.Messages.Candidates> CreateDownloadCv(grpc::CallOptions options)
       {
-        return CallInvoker.BlockingUnaryCall(__Method_CreateDownloadCv, null, options, request);
-      }
-      public virtual grpc::AsyncUnaryCall<global::GRpc.Messages.Candidate> CreateDownloadCvAsync(global::GRpc.Messages.Candidate request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return CreateDownloadCvAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      public virtual grpc::AsyncUnaryCall<global::GRpc.Messages.Candidate> CreateDownloadCvAsync(global::GRpc.Messages.Candidate request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_CreateDownloadCv, null, options, request);
+        return CallInvoker.AsyncDuplexStreamingCall(__Method_CreateDownloadCv, null, options);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override CandidateServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -144,7 +137,7 @@ namespace GRpc.Messages {
     {
       serviceBinder.AddMethod(__Method_CreateCv, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::GRpc.Messages.Candidate, global::GRpc.Messages.CreateCvResponse>(serviceImpl.CreateCv));
       serviceBinder.AddMethod(__Method_DownloadCv, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::GRpc.Messages.DownloadByName, global::GRpc.Messages.Candidate>(serviceImpl.DownloadCv));
-      serviceBinder.AddMethod(__Method_CreateDownloadCv, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRpc.Messages.Candidate, global::GRpc.Messages.Candidate>(serviceImpl.CreateDownloadCv));
+      serviceBinder.AddMethod(__Method_CreateDownloadCv, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::GRpc.Messages.Candidate, global::GRpc.Messages.Candidates>(serviceImpl.CreateDownloadCv));
     }
 
   }

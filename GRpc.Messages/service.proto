@@ -7,5 +7,5 @@ import "message.proto";
 service CandidateService {
     rpc CreateCv (stream Candidate) returns (CreateCvResponse);
     rpc DownloadCv (DownloadByName) returns (stream Candidate);
-    rpc CreateDownloadCv (Candidate) returns (Candidate);
+    rpc CreateDownloadCv (stream Candidate) returns (stream Candidates);
 }
