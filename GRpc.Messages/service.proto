@@ -5,7 +5,7 @@ option csharp_namespace = "GRpc.Messages";
 import "message.proto";
 
 service CandidateService {
-    rpc CreateCv (Candidate) returns (CreateCvResponse);
+    rpc CreateCv (stream Candidate) returns (CreateCvResponse);
     rpc DownloadCv (DownloadByName) returns (Candidate);
     rpc CreateDownloadCv (Candidate) returns (Candidate);
 }
