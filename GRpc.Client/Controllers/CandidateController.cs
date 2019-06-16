@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Bogus;
 using Bogus.Extensions;
@@ -17,6 +18,7 @@ namespace GRpc.Client.Controllers
         {
             this.candidateServiceClient = candidateServiceClient;
         }
+
         [HttpGet]
         public async Task<ActionResult<bool>> TestCreate()
         {
@@ -51,7 +53,31 @@ namespace GRpc.Client.Controllers
             {
                 Console.WriteLine(e);
             }
-            
+
+            return result;
+        }
+
+        [HttpGet]
+        public async Task<Candidate> GetCandidate()
+        {
+            var result= new Candidate();
+            try
+            {
+                var client = candidateServiceClient.DownloadCv(new DownloadByName()
+                {
+                    Name = "test"
+                });
+                var iter = client.ResponseStream;
+                while (await iter.MoveNext())
+                {
+                    result = iter.Current;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
             return result;
         }
     }

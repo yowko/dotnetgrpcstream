@@ -21,7 +21,7 @@ namespace GRpc.Client
             services.AddSingleton(
                 new CandidateService.CandidateServiceClient(
                     new Channel(HostString, ChannelCredentials.Insecure)));
-            services.AddMvcCore().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvcCore().AddJsonFormatters().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
