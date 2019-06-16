@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package Message; //will be placed in a namespace matching the package name if csharp_namespace is not specified
+option csharp_namespace = "GRpc.Messages";
+import "message.proto";
+
+service CandidateService {
+    rpc CreateCv (Candidate) returns (CreateCvResponse);
+    rpc DownloadCv (DownloadByName) returns (Candidate);
+    rpc CreateDownloadCv (Candidate) returns (Candidate);
+}
